@@ -1,6 +1,7 @@
 import Results from './Results';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+let recommend = '';
 
 const Recommend = ({ user }) => {
   const [books, setBooks] = useState([]);
@@ -14,7 +15,13 @@ const Recommend = ({ user }) => {
         };
         axios.get(`http://localhost:3000/bookbee/books/${user._id}/getRecs`, config).then((res) => {
           const myBooks = res.data;
-          setBooks(myBooks);
+          console.log(myBooks);
+          if (myBooks.length) {
+            setBooks(myBooks);
+          } else {
+            console.log('Tere liye Recommendation nahi hai');
+            recommend = '<h2> No Books Found</h2>';
+          }
           // console.log('Book tho review de phele chutiye');
         });
       }

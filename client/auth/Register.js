@@ -1,6 +1,9 @@
 import { Component } from 'react';
 import { Redirect } from 'react-router';
 import axios from 'axios';
+import UserDetails from '../components/UserDetails';
+import PersonalDetails from '../components/PersonalDetails';
+import Confirm from '../components/Confirm';
 
 export class Register extends Component {
   state = {

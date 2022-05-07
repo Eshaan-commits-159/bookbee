@@ -107,8 +107,9 @@ const Navbar = ({ user, handleLogin }) => {
     handleLogin(false);
   };
 
-  let buttons;
+  let buttons, welcome;
   if (user) {
+    welcome = `Welcome ${user.username}`;
     buttons = (
       <Box sx={{ flexGrow: 0 }}>
         <Tooltip title="Open settings">
@@ -146,6 +147,7 @@ const Navbar = ({ user, handleLogin }) => {
       </Box>
     );
   } else {
+    welcome = '';
     buttons = (
       <Box sx={{ flexGrow: 0 }}>
         <MenuItem key="login">
@@ -236,6 +238,7 @@ const Navbar = ({ user, handleLogin }) => {
             </SearchIconWrapper>
             <StyledInputBase placeholder="Search…" inputProps={{ 'aria-label': 'search' }} />
           </Search>
+          <h4 style={{ marginRight: '10px' }}>{welcome}</h4>
           {buttons}
         </Toolbar>
       </Container>

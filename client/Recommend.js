@@ -20,7 +20,7 @@ const Recommend = ({ user }) => {
             setBooks(myBooks);
           } else {
             console.log('Tere liye Recommendation nahi hai');
-            recommend = '<h2> No Books Found</h2>';
+            recommend = 'Please give rating to  some books';
           }
           // console.log('Book tho review de phele chutiye');
         });
@@ -34,11 +34,19 @@ const Recommend = ({ user }) => {
     }
   };
   useEffect(() => requestBooks(), []);
-  return (
-    <div className="recommend">
-      <Results books={books} />
-    </div>
-  );
+  if (recommend) {
+    return (
+      <div className="recommend">
+        <h2 className="search">{recommend}</h2>
+      </div>
+    );
+  } else {
+    return (
+      <div className="recommend">
+        <Results books={books} />
+      </div>
+    );
+  }
 };
 
 export default Recommend;
